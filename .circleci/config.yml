@@ -44,7 +44,7 @@ commands:
       - run: DEBUG=cypress:cli npx cypress cache list
       - run:
           name: Verify cypress
-          command: npx cypress verify
+          command: cypress run --record --key 1f452dac-016f-4fe6-aa23-189d44aea017
 
   cache-dependencies:
     description: Save NPM cache and Cypress binary
