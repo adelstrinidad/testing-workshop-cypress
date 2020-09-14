@@ -44,7 +44,7 @@ commands:
       - run: DEBUG=cypress:cli npx cypress cache list
       - run:
           name: Verify cypress
-          command: cypress run --record --key 1f452dac-016f-4fe6-aa23-189d44aea017
+          command: npx cypress verify
 
   cache-dependencies:
     description: Save NPM cache and Cypress binary
@@ -67,7 +67,7 @@ commands:
       # we are running just a single answers file in a particular subfolder here
       # if you want to run answers in EVERY subfolder at once use command
       # npx cypress run --spec 'cypress/integration/*/answer.js' --config ignoreTestFiles="",supportFile=cypress/support/reset.js
-      - run: npx cypress run --spec 'cypress/integration/<< parameters.folder >>/answer.js' --config ignoreTestFiles="",supportFile=cypress/support/reset.js
+      - run: npx cypress run --spec 'cypress/integration/<< parameters.folder >>/answer.js' --record --key 1f452dac-016f-4fe6-aa23-189d44aea017 --config ignoreTestFiles="",supportFile=cypress/support/reset.js
 
   store-test-artifacts:
     description: Saves Cypress screenshots and videos
