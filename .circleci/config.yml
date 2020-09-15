@@ -67,7 +67,7 @@ commands:
       # we are running just a single answers file in a particular subfolder here
       # if you want to run answers in EVERY subfolder at once use command
       # npx cypress run --spec 'cypress/integration/*/answer.js' --config ignoreTestFiles="",supportFile=cypress/support/reset.js
-      - run: npx cypress run --spec --parallel 'cypress/integration/<< parameters.folder >>/answer.js' --record --key 1f452dac-016f-4fe6-aa23-189d44aea017 --config ignoreTestFiles="",supportFile=cypress/support/reset.js
+      - run: npx cypress run --spec 'cypress/integration/<< parameters.folder >>/answer.js' --config ignoreTestFiles="",supportFile=cypress/support/reset.js
 
   store-test-artifacts:
     description: Saves Cypress screenshots and videos
@@ -184,14 +184,15 @@ jobs:
           command: npx cypress run --spec cypress/integration/13-app-actions/po-full-spec.js
       - run:
           name: Run app actions spec
-          command: npx cypress run --record --key 1f452dac-016f-4fe6-aa23-189d44aea017  --parallel --spec cypress/integration/13-app-actions/app-actions-full-spec.js
+          command: npx cypress run --spec cypress/integration/13-app-actions/app-actions-full-spec.js
 
       - store-test-artifacts
 
 workflows:
   version: 2
-  build:
+  tests:
     jobs:
+      - two-commands
       - single-command
       - answers
 
@@ -201,11 +202,7 @@ workflows:
           name: using Firefox
           executor: cypress/browsers-chrome78-ff70
           browser: firefox
-          parallel: true
-          parallelism: 2
-          group: '2x-firefox on CircleCI'
-          #start: npm start
-          start: npm run ci
-          #wait-on: 'http://localhost:3000'
+          start: npm start
+          wait-on: 'http://localhost:3000'
           spec: 'cypress/integration/07-ci/*'
           no-workspace: true # since we don't need the workspace after this job
