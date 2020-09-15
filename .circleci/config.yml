@@ -202,6 +202,8 @@ workflows:
           name: using Firefox
           executor: cypress/browsers-chrome78-ff70
           browser: firefox
+          parallel: true
+          parallelism: 2
           start: npm start
           wait-on: 'http://localhost:3000'
           spec: 'cypress/integration/07-ci/*'
