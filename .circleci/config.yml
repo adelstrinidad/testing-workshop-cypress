@@ -184,17 +184,16 @@ jobs:
           command: npx cypress run --spec cypress/integration/13-app-actions/po-full-spec.js
       - run:
           name: Run app actions spec
-          command: npx cypress run --spec cypress/integration/13-app-actions/app-actions-full-spec.js
+          command: npx cypress run --record --key 1f452dac-016f-4fe6-aa23-189d44aea017  --parallel --spec cypress/integration/13-app-actions/app-actions-full-spec.js
 
       - store-test-artifacts
 
 workflows:
   version: 2
-  tests:
+  build:
     jobs:
-
       - single-command
-
+      - answers
 
       # run tests on Firefox browser using Cypress CircleCI Orb
       # see https://github.com/cypress-io/circleci-orb
