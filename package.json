@@ -4,7 +4,7 @@
   "description": "A 3-4 hour testing workshop complete with application, exercise tests and speaker slides",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --record --key 1f452dac-016f-4fe6-aa23-189d44aea017 --parallel --spec 'cypress/integration/07-ci/*'",
+    "test": "cypress run --record --key 1f452dac-016f-4fe6-aa23-189d44aea017  --spec 'cypress/integration/07-ci/*'",
     "posttest": "npm run --prefix todomvc reset:db",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
