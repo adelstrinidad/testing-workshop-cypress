@@ -193,7 +193,7 @@ workflows:
   tests:
     jobs:
 
-      - single-command
+      #- single-command
 
 
       # run tests on Firefox browser using Cypress CircleCI Orb
@@ -202,8 +202,6 @@ workflows:
           name: using Firefox
           executor: cypress/browsers-chrome78-ff70
           browser: firefox
-          parallel: true
-          parallelism: 2
           start: npm start
           wait-on: 'http://localhost:3000'
           spec: 'cypress/integration/07-ci/*'

@@ -64,7 +64,7 @@ describe('UI', () => {
 
       cy.contains('first item').should('not.exist')
       cy.contains('second item').should('exist')
-      getTodoItems().should('have.length', 2)
+      getTodoItems().should('have.length', 1)
     })
   })
 
