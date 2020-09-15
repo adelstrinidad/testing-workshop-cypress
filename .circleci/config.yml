@@ -193,7 +193,7 @@ workflows:
   tests:
     jobs:
 
-      #- single-command
+      - single-command
 
 
       # run tests on Firefox browser using Cypress CircleCI Orb
